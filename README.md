@@ -16,7 +16,7 @@ single scannable diagram.
 - `/template` — PowerPoint template (.pptx) with instructions
 - `/example` — Completed SIR epidemiological case study example
 - `/library` — Python library for automated diagram generation *(under development)*
-- - `/literature-review`— Full list of 67 records retrieved from Google Scholar
+- `/literature-review`— Full list of 67 records retrieved from Google Scholar
 
 ## How to Use
 
