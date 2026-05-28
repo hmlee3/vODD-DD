@@ -15,10 +15,15 @@ single scannable diagram.
 
 - `/template` — PowerPoint template (.pptx) with instructions
 - `/example` — Completed SIR epidemiological case study example
-- `/library` — Python library for automated diagram generation
+- `/vODD-DD library` — Python library for automated diagram generation
 - `/literature-review`— Full list of 67 records retrieved from Google Scholar
 
-## How to Use
+## How to Use the vODD-DD Python libary
+1. Please read the README file in the library
+
+
+
+## How to Use the Power Point Template
 
 1. Download the PowerPoint template from `/template`
 2. Follow the instructions on the How to Use slide
