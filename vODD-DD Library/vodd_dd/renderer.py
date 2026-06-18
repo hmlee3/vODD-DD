@@ -1,26 +1,33 @@
+# -*- coding: utf-8 -*-
+# This file is intentionally ASCII-only for maximum portability.
 """
-vODD-DD Protocol — Renderer
+vODD-DD Protocol -- Renderer v6
+True A4 portrait. 3-column layout. Measure and draw are always in sync.
+PNG via PyMuPDF (pip install pymupdf) -- pure Python, works on Windows.
 """
 import os, sys, subprocess, shutil, tempfile, textwrap, io
 from typing import List
 from reportlab.pdfgen import canvas as rl_canvas
 from .models import VODDProtocol, Submodel
 
-# ── Page ─────────────────────────────────────────────────────────────────────
+# -- Page ---------------------------------------------------------------------
 A4_W = 595.28
 A4_H = 841.89
 
+# -- Palette -------------------------------------------------------------------
+# Banner backgrounds are dark so WHITE text is always readable.
+# Card content titles use #1A1A2E (near-black) on light backgrounds.
 C = dict(
     # Purpose strip
     purpose_bg  = "#0D7377", purpose_txt = "#B2EBF2",
 
-    # ── Data Inputs ── dark purple banner (white text); colour-matched card titles
-    inp_hdr     = "#4A148C",   # banner → white
+    # -- Data Inputs -- dark purple banner (white text); colour-matched card titles
+    inp_hdr     = "#4A148C",   # banner -> white
     inp_bdr     = "#6A1BA3",
-    ds_title    = "#4A148C",   # dataset name: deep purple on white  ✓
+    ds_title    = "#4A148C",   # dataset name: deep purple on white  OK
     pipe_bg     = "#FFFDE7",  pipe_bdr = "#E65100",  pipe_title = "#BF360C",
 
-    # ── ABM Core ── colour-matched titles on tinted backgrounds
+    # -- ABM Core -- colour-matched titles on tinted backgrounds
     abm_bg      = "#E0F7FA",  abm_bdr  = "#006064",  abm_title  = "#006064",
     ag_bg       = "#E0F7FA",  ag_bdr   = "#006064",  ag_title   = "#006064",
     sub_bg      = "#E8FDFF",  sub_bdr  = "#006064",  sub_title  = "#006064",
@@ -28,26 +35,26 @@ C = dict(
     env_bg      = "#E8F5E9",  env_bdr  = "#1B5E20",  env_title  = "#1B5E20",
     temp_bg     = "#FFFDE7",  temp_bdr = "#E65100",
 
-    # ── Observations ── deep indigo banner (white text); colour-matched titles
-    obs_hdr     = "#1A237E",   # banner → white
+    # -- Observations -- deep indigo banner (white text); colour-matched titles
+    obs_hdr     = "#1A237E",   # banner -> white
     out_bgs     = ["#EDE7F6", "#E3F2FD", "#FFF8E1"],
     out_bdrs    = ["#4527A0", "#0D47A1", "#BF360C"],
-    out_titles  = ["#4527A0", "#0D47A1", "#BF360C"],  # coloured titles on light bg ✓
+    out_titles  = ["#4527A0", "#0D47A1", "#BF360C"],  # coloured titles on light bg OK
 
-    # ── Model Evaluation ── dark purple banner (white text)
-    eval_hdr    = "#4A148C",   # banner → white
+    # -- Model Evaluation -- dark purple banner (white text)
+    eval_hdr    = "#4A148C",   # banner -> white
     cal_bg      = "#FFEBEE",  cal_bdr  = "#B71C1C",  cal_title  = "#B71C1C",
     val_bg      = "#E8F5E9",  val_bdr  = "#1B5E20",  val_title  = "#1B5E20",
 
-    # ── Scenarios
+    # -- Scenarios
     sc_bg       = "#ECEFF1",  sc_bdr   = "#78909C",
     sc_card     = "#FFFFFF",  sc_card_bdr = "#CFD8DC",
     sc_hl       = "#EDE7F6",  sc_hl_bdr   = "#4527A0",  sc_hl_txt = "#4527A0",
 
-    # ── Badges ── dark fills, white text
+    # -- Badges -- dark fills, white text
     static_bg   = "#01579B",  dynamic_bg = "#1B5E20",  badge_txt = "#FFFFFF",
 
-    # ── Text
+    # -- Text
     link        = "#4A148C",
     dark        = "#212121",  mid = "#424242",  muted = "#616161",
     white       = "#FFFFFF",  page_bg = "#F5F7FA",
@@ -55,7 +62,7 @@ C = dict(
     stop_c      = "#B71C1C",
 )
 
-# ── Typography ────────────────────────────────────────────────────────────────
+# -- Typography ----------------------------------------------------------------
 FS = dict(
     purpose_lbl = 15, purpose_txt = 10,
     sec_hdr     = 12, card_ttl    = 10,
@@ -67,12 +74,17 @@ PAD =  7     # internal padding
 GAP =  5     # gap between elements
 MAR = 11     # page margin
 
-
+# Font used for all rendered text (sans-serif -> Helvetica in the PDF backend,
+# and the SVG backend declares font-family:sans-serif which the renderers map
+# to a Helvetica-metrics-compatible face). We measure against Helvetica so that
+# wrapping decisions in the height calculators match the drawn output exactly.
 _WRAP_FONT = "Helvetica"
-.
+# Glyph ascent as a fraction of font size (Helvetica ~= 0.718). The first line of
+# any text block must be dropped by this amount below the box top, otherwise the
+# ascenders poke above the container (the original "header overflow" bug).
 ASCENT = 0.718
 
-# ── Emoji / labels ────────────────────────────────────────────────────────────
+# -- Emoji / labels ------------------------------------------------------------
 def _kw(text, table, fallback):
     t = text.lower()
     for kws, em in table:
@@ -98,10 +110,15 @@ def emoji_ds(name, desc, freq): return _kw(f"{name} {desc}", _DS_KW, _DS_FB.get(
 def emoji_sm(name, desc=""): return _kw(f"{name} {desc}", _SM_KW, "[*]")
 def emoji_op(name, what=""): return _kw(f"{name} {what}", _OP_KW, "[>]")
 
-# ── Text helpers ──────────────────────────────────────────────────────────────
+# -- Text helpers --------------------------------------------------------------
 from reportlab.pdfbase.pdfmetrics import stringWidth
 
-
+# Wrapping is measured against Helvetica metrics, which the reportlab/PDF backend
+# uses exactly. The SVG backend declares font-family:sans-serif, and some SVG
+# viewers substitute a slightly wider face. This factor shrinks the usable line
+# width by a few percent so wrapped lines keep a small buffer and never spill past
+# the box edge under font substitution. It is invisible in the PDF (text just
+# wraps a hair earlier) and keeps measurement and drawing perfectly in sync.
 WRAP_SAFETY = 0.95
 
 def _sw(s: str, fs: float) -> float:
@@ -109,7 +126,11 @@ def _sw(s: str, fs: float) -> float:
     return stringWidth(s, _WRAP_FONT, fs)
 
 def _wrap(text: str, max_w: float, fs: float) -> List[str]:
+    """Greedy word-wrap using real glyph widths so measurement == drawing.
 
+    Falls back to character-level breaking for words longer than max_w, so no
+    single long token (e.g. a URL or 'adherence_prob') overflows the box edge.
+    """
     if max_w <= 0:
         max_w = fs  # degenerate guard
     max_w *= WRAP_SAFETY
@@ -146,7 +167,7 @@ def _hb(items, max_w, fs, ind=12):
     return sum(len(_wrap(i, max_w-ind, fs)) * _lh(fs) for i in items)
 def _hdr_h(fs=None): return (fs or FS["sec_hdr"]) + PAD * 1.6
 
-# ── SVG context ───────────────────────────────────────────────────────────────
+# -- SVG context ---------------------------------------------------------------
 def _esc(t): return str(t).replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
 
 class SVGCtx:
@@ -171,7 +192,7 @@ class SVGCtx:
     def _fa(self):
         w = "bold" if self._bold else "normal"
         s = "italic" if self._italic else "normal"
-        # Prefer Helvetica/Arial — the metrics wrapping is measured against — so the
+        # Prefer Helvetica/Arial -- the metrics wrapping is measured against -- so the
         # SVG renders with the same glyph widths the layout was computed for.
         return (f'font-family="Helvetica, Arial, sans-serif" font-size="{self._fs:.1f}" '
                 f'font-weight="{w}" font-style="{s}"')
@@ -199,7 +220,7 @@ class SVGCtx:
                 f'  <rect width="{self.W:.0f}" height="{self.H:.0f}" fill="white"/>\n'
                 f'  {body}\n</svg>')
 
-# ── Drawing primitives ────────────────────────────────────────────────────────
+# -- Drawing primitives --------------------------------------------------------
 def rrect(ctx, x, y, w, h, r=4, fill="#FFFFFF", stroke="#AAAAAA", sw=1.0):
     ctx.setFillColor(fill); ctx.setStrokeColor(stroke); ctx.setLineWidth(sw)
     try:    ctx.roundRect(x, y, w, h, r, stroke=1, fill=1)
@@ -214,7 +235,7 @@ def _fit_fs(text, max_w, fs, min_fs=7.0, bold=True):
 
 def banner(ctx, x, y, w, h, text, bg, fg="#FFFFFF", fs=None):
     # NOTE: reportlab reads 3-digit hex like "#FFF" as the integer 0x000FFF
-    # (pure blue), NOT as white — it does not expand shorthand the way CSS does.
+    # (pure blue), NOT as white -- it does not expand shorthand the way CSS does.
     # Always use full 6-digit hex for colors passed to the canvas.
     fs = fs or FS["sec_hdr"]
     rrect(ctx, x, y, w, h, r=4, fill=bg, stroke=bg, sw=0)
@@ -229,7 +250,9 @@ def pill(ctx, x, y, text, bg, w=50, h=15):
     ctx.drawCentredString(x+w/2, y+h/2-FS["badge"]*0.36, text)
 
 def wt(ctx, text, x, y, max_w, fs=None, color=None, bold=False, italic=False) -> float:
-
+    """Draw wrapped text. `y` is the TOP of the text area; the first baseline is
+    dropped by the glyph ascent so ascenders stay inside the container. Returns
+    the y (top) for the next block."""
     fs  = fs or FS["body"]
     fn  = "Helvetica-Bold" if bold else ("Helvetica-Oblique" if italic else "Helvetica")
     if color: ctx.setFillColor(color)
@@ -242,13 +265,14 @@ def wt(ctx, text, x, y, max_w, fs=None, color=None, bold=False, italic=False) ->
     return y
 
 def wb(ctx, items, x, y, max_w, fs=None, color=None, ind=12) -> float:
+    """Draw a bulleted list. `y` is the TOP of the text area (see `wt`)."""
     fs = fs or FS["body"]
     if color: ctx.setFillColor(color)
     ctx.setFont("Helvetica", fs)
     base = y - ASCENT * fs
     for item in items:
         lines = _wrap(item, max_w-ind, fs)
-        ctx.drawString(x, base, "•")
+        ctx.drawString(x, base, "\u2022")
         ctx.drawString(x+ind, base, lines[0] if lines else "")
         base -= _lh(fs); y -= _lh(fs)
         for cont in lines[1:]:
@@ -256,19 +280,21 @@ def wb(ctx, items, x, y, max_w, fs=None, color=None, ind=12) -> float:
             base -= _lh(fs); y -= _lh(fs)
     return y
 
-# ── Layout constants ──────────────────────────────────────────────────────────
+# -- Layout constants ----------------------------------------------------------
 PILL_TXT_W = 50   # visible pill width
 PILL_H     = 15   # pill height
 PILL_GAP   = 6    # gap between name column and pill
 PILL_W     = PILL_TXT_W + PILL_GAP   # total horizontal space reserved for the badge
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Height calculators — MUST match draw exactly
+# ===============================================================================
+# Height calculators -- MUST match draw exactly
 # Each returns the height of the element given the available width.
-# ═══════════════════════════════════════════════════════════════════════════════
+# ===============================================================================
 
 def _h_ds_card(w, ds):
-
+    """Height of a single dataset card. The STATIC/DYNAMIC badge sits to the
+    RIGHT of the name (template layout), so the name wraps within the width left
+    of the badge and the badge never overlaps body text."""
     iw       = w - 2*PAD
     name_w   = iw - PILL_W                 # name column, leaving room for the badge
     h  = PAD
@@ -289,7 +315,7 @@ def _h_pipeline(w, p):
     h += GAP * 0.5
     for _, items in [("",p.collection),("",p.preprocessing),("",p.analysis)]:
         h += _lh(FS["label"])   # stage label
-        h += _h("  |  ".join(items) if items else "—", iw, FS["body"])
+        h += _h("  |  ".join(items) if items else "--", iw, FS["body"])
         h += GAP * 0.4
     h += PAD
     return h
@@ -351,7 +377,9 @@ def _h_environment(w, env):
     return h
 
 def _h_temporal(w=None, abm=None):
-
+    """Height of the temporal/stop strip. When given the available width and the
+    ABM data, it measures real wrapped line counts so long durations or stop
+    conditions can't overflow the strip; otherwise it falls back to two lines."""
     if w is None or abm is None:
         return _lh(FS["temporal"]) * 2 + PAD * 2.4
     iw = w - 2*PAD
@@ -422,9 +450,10 @@ def _h_scenarios(W, p):
     return PAD + _hdr_h() + PAD + body + PAD * 2
 
 
-# ═══════════════════════════════════
+# ===============================================================================
 # Renderer
-# ═══════════════════════════════════
+# ===============================================================================
+
 class VODDRenderer:
     A4_W = 595.28
     A4_H = 841.89
@@ -455,7 +484,7 @@ class VODDRenderer:
                     pur_h=pur_h, main_h=main_h, sc_h=sc_h,
                     h1=h1, h2=h2, h3=h3)
 
-    # ── Public API ────────────────────────────────────────────────────────────
+    # -- Public API ------------------------------------------------------------
     def render_pdf(self, path: str):
         """A4-width portrait PDF. Height is content-driven (fits on one A4 page
         for typical models). Print with 'scale to fit' if taller than A4."""
@@ -469,7 +498,7 @@ class VODDRenderer:
         c.save()
 
     def render_svg(self, path: str):
-        """SVG at 2× display resolution."""
+        """SVG at 2x display resolution."""
         lo  = self._layout()
         ctx = SVGCtx(lo["W"], lo["H"])
         self._draw(ctx, lo)
@@ -482,7 +511,7 @@ class VODDRenderer:
         Install:  pip install pymupdf
         Fallback: pdftoppm (Linux/Mac system tool)
         """
-        # ── PyMuPDF ───────────────────────────────────────────────────────────
+        # -- PyMuPDF -----------------------------------------------------------
         try:
             import fitz
             buf = io.BytesIO()
@@ -500,7 +529,7 @@ class VODDRenderer:
         except ImportError:
             pass
 
-        # ── pdftoppm fallback (Linux/macOS) ───────────────────────────────────
+        # -- pdftoppm fallback (Linux/macOS) -----------------------------------
         fd, tmp = tempfile.mkstemp(suffix=".pdf")
         os.close(fd)
         try:
@@ -521,7 +550,7 @@ class VODDRenderer:
                 "  Linux/Mac only:    sudo apt install poppler-utils"
             )
 
-    # ── Draw ──────────────────────────────────────────────────────────────────
+    # -- Draw ------------------------------------------------------------------
     def _draw(self, ctx, lo):
         W, H   = lo["W"], lo["H"]
         c1x    = MAR
@@ -538,7 +567,7 @@ class VODDRenderer:
         self._d_col3(ctx, c3x, main_y + lo["main_h"] - lo["h3"], lo["c3w"], lo["h3"])
         self._d_scenarios(ctx, MAR, sc_y, W-2*MAR, lo["sc_h"])
 
-    # ── Purpose ───────────────────────────────────────────────────────────────
+    # -- Purpose ---------------------------------------------------------------
     def _d_purpose(self, ctx, x, y, w, h):
         rrect(ctx, x, y, w, h, r=6, fill=C["purpose_bg"], stroke=C["purpose_bg"], sw=0)
         iw = w - 2*PAD
@@ -549,7 +578,7 @@ class VODDRenderer:
         wt(ctx, str(self.p.purpose), x+PAD, ty, iw,
            fs=FS["purpose_txt"], color=C["purpose_txt"], italic=True)
 
-    # ── Col 1: Data Inputs + Pipeline ─────────────────────────────────────────
+    # -- Col 1: Data Inputs + Pipeline -----------------------------------------
     def _d_col1(self, ctx, x, y, w, h):
         rrect(ctx, x, y, w, h, r=6, fill=C["card_bg"], stroke=C["card_bdr"], sw=1)
         iw = w - 2*PAD
@@ -588,7 +617,7 @@ class VODDRenderer:
         name_h = _h(ds.name, name_w, FS["card_ttl"])
         ty = wt(ctx, ds.name, x+PAD, top, name_w,
                 fs=FS["card_ttl"], color=C["ds_title"], bold=True)
-        # Advance past whichever is taller — the name block or the badge.
+        # Advance past whichever is taller -- the name block or the badge.
         ty = top - max(name_h, PILL_H)
         ty -= GAP * 0.5
 
@@ -612,11 +641,11 @@ class VODDRenderer:
                             ("2. Pre-processing", self.p.pipeline.preprocessing),
                             ("3. Analysis", self.p.pipeline.analysis)]:
             ty = wt(ctx, lbl, x+PAD, ty, iw, fs=FS["label"], color=C["dark"], bold=True)
-            ty = wt(ctx, "  |  ".join(items) if items else "—",
+            ty = wt(ctx, "  |  ".join(items) if items else "--",
                     x+PAD+5, ty, iw-5, fs=FS["body"], color=C["muted"])
             ty -= GAP * 0.4
 
-    # ── Col 2: ABM Core ───────────────────────────────────────────────────────
+    # -- Col 2: ABM Core -------------------------------------------------------
     def _d_col2(self, ctx, x, y, w, h):
         rrect(ctx, x, y, w, h, r=7, fill=C["abm_bg"], stroke=C["abm_bdr"], sw=2)
         ip    = PAD + 2
@@ -764,7 +793,7 @@ class VODDRenderer:
         wt(ctx, f"Stop: {abm.stop_condition}", x+PAD, ty, iw,
            fs=FS["temporal"], color=C["stop_c"])
 
-    # ── Col 3: Observations + Evaluation ──────────────────────────────────────
+    # -- Col 3: Observations + Evaluation --------------------------------------
     def _d_col3(self, ctx, x, y, w, h):
         obs_h  = _h_col3_obs(w, self.p.output_patterns)
         eval_h = _h_col3_eval(w, self.p.evaluation)
@@ -868,7 +897,7 @@ class VODDRenderer:
             wt(ctx, f"Result: {val.result}", x+PAD*2, vty, iw-PAD,
                fs=FS["body"], color=C["val_title"], bold=True)
 
-    # ── Scenarios ─────────────────────────────────────────────────────────────
+    # -- Scenarios -------------------------------------------------------------
     def _d_scenarios(self, ctx, x, y, w, h):
         rrect(ctx, x, y, w, h, r=6, fill=C["sc_bg"], stroke=C["sc_bdr"], sw=1)
         hh = _hdr_h()
