@@ -1,8 +1,8 @@
 """
-Example: Residential Land-Use Change DATA-DRIVEN ABM — vODD-DD diagram generation
+Example: Residential Land-Use Change DATA-DRIVEN ABM -- vODD-DD diagram generation
 
-A classical data-driven ABM in the Parker et al. (2003) / Brown et al. (2005)
-lineage: household agents bid for parcels on a raster grid, developers convert
+A classical data-driven ABM inspired by Parker et al. (2003) / Brown et al. (2005):
+household agents bid for parcels on a raster grid, developers convert
 undeveloped land when returns exceed a threshold, and the simulation is
 calibrated against historical land-use maps (pattern-oriented modeling).
 Used as the engine of a regional planning Digital Twin to evaluate zoning,
@@ -30,7 +30,7 @@ from vodd_dd import (
     Scenario,
 )
 
-# ── 1. Define your protocol ───────────────────────────────────────────────────
+# -- 1. Define your protocol --------------------------------------------------
 
 protocol = VODDProtocol(
 
@@ -41,7 +41,7 @@ protocol = VODDProtocol(
         "regional planning Digital Twin."
     ),
 
-    # ── Data Inputs ──────────────────────────────────────────────────────────
+    # -- Data Inputs ----------------------------------------------------------
     datasets=[
         Dataset(
             name="Parcel Cadastre",
@@ -94,7 +94,7 @@ protocol = VODDProtocol(
         ],
     ),
 
-    # ── ABM Core ─────────────────────────────────────────────────────────────
+    # -- ABM Core -------------------------------------------------------------
     abm_core=ABMCore(
         model_name="ResLUCC (Residential Land-Use Change ABM)",
         agents=Agents(
@@ -115,8 +115,10 @@ protocol = VODDProtocol(
                          "Utility-based bid over feasible parcels (multinomial logit)"),
                 Submodel("Developer Conversion",
                          "Convert undeveloped -> developed if expected return > threshold"),
+                # FIX 3: align with prose/table -- amenity update covers BOTH
+                # local aesthetic AND local price within a Moore neighborhood.
                 Submodel("Amenity Update",
-                         "Neighbor density & land cover update local aesthetic score"),
+                         "Neighbor density & land cover update local aesthetic and price"),
             ],
         ),
         interactions=Interactions(
@@ -146,7 +148,7 @@ protocol = VODDProtocol(
         stop_condition="Simulation horizon reached OR developable land exhausted",
     ),
 
-    # ── Observations ─────────────────────────────────────────────────────────
+    # -- Observations ---------------------------------------------------------
     output_patterns=[
         OutputPattern(
             name="Settlement Pattern Map",
@@ -162,7 +164,7 @@ protocol = VODDProtocol(
         ),
     ],
 
-    # ── Model Evaluation ─────────────────────────────────────────────────────
+    # -- Model Evaluation -----------------------------------------------------
     evaluation=ModelEvaluation(
         calibration=Calibration(
             method="Pattern-oriented modeling (POM) with genetic algorithm",
@@ -174,17 +176,20 @@ protocol = VODDProtocol(
             data_source="Historical Land-Use Maps (1990 -> 2010 trajectory)",
             result="Best-fit parameter set; Kappa > 0.70 on calibration period",
         ),
+        # FIX 2: validation approaches now match Table B exactly -- three rows:
+        # output validation, scenario validation, and null-model contrast.
         validation=Validation(
             approaches=[
-                "Multi-resolution Kappa on held-out 2010-2020 maps",
-                "Density-gradient & fractal-dimension comparison",
+                "Output validation: Multi-resolution Kappa, density-gradient & "
+                "fractal-dimension comparison on held-out 2010-2020 maps",
+                "Scenario validation: simulated vs recorded post-policy land-use trends",
                 "Null-model contrast (random allocation, persistence)",
             ],
             result="Pattern metrics within 10% of observed; null clearly rejected",
         ),
     ),
 
-    # ── Scenarios ────────────────────────────────────────────────────────────
+    # -- Scenarios ------------------------------------------------------------
     scenarios=[
         Scenario("Baseline",
                  "Status-quo zoning; calibrated preferences"),
@@ -192,12 +197,12 @@ protocol = VODDProtocol(
                  "Strict urban-growth boundary around existing built-up area"),
         Scenario("TOD Upzoning",
                  "Higher allowed density within 800 m of transit corridors"),
-        Scenario("★ Combined",
+        Scenario("* Combined",
                  "Growth boundary + TOD upzoning; key DT policy scenario",
                  highlighted=True),
     ],
 )
 
-# ── 2. Generate the diagram ───────────────────────────────────────────────────
-result = generate(protocol, "lucc_vodd_dd.pdf")
-print(f"Diagram saved → {out}")
+# -- 2. Generate the diagram --------------------------------------------------
+out = generate(protocol, "lucc_vodd_dd.pdf")
+print(f"Diagram saved -> {out}")

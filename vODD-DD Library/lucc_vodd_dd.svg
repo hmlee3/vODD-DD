@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1191" height="2640" viewBox="0 0 595 1320">
+  <rect width="595" height="1320" fill="white"/>
+  <rect x="0.0" y="0.0" width="595.3" height="1319.9" rx="0" ry="0" fill="#F5F7FA" stroke="#F5F7FA" stroke-width="0.0"/>
+  <rect x="11.0" y="11.0" width="573.3" height="82.5" rx="6" ry="6" fill="#0D7377" stroke="#0D7377" stroke-width="0.0"/>
+  <text x="18.0" y="28.8" font-family="Helvetica, Arial, sans-serif" font-size="15.0" font-weight="bold" font-style="normal" fill="#FFFFFF">PURPOSE &amp; PATTERNS</text>
+  <text x="18.0" y="48.2" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#B2EBF2">Simulate residential location choice and developer conversion on a parcel grid to evaluate the effect of zoning,</text>
+  <text x="18.0" y="62.2" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#B2EBF2">urban-growth boundaries and transit-oriented development on urban-sprawl patterns; engine of a regional planning</text>
+  <text x="18.0" y="76.2" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#B2EBF2">Digital Twin.</text>
+  <rect x="11.0" y="98.5" width="151.0" height="1096.7" rx="6" ry="6" fill="#FAFAFA" stroke="#CFD8DC" stroke-width="1.0"/>
+  <rect x="18.0" y="105.5" width="137.0" height="23.2" rx="4" ry="4" fill="#4A148C" stroke="#4A148C" stroke-width="0.0"/>
+  <text x="86.5" y="121.4" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12.0" font-weight="bold" font-style="normal" fill="#FFFFFF">DATA INPUTS</text>
+  <rect x="18.0" y="135.7" width="137.0" height="117.0" rx="4" ry="4" fill="#FFFFFF" stroke="#6A1BA3" stroke-width="1.0"/>
+  <rect x="98.0" y="142.7" width="50.0" height="15.0" rx="3" ry="3" fill="#01579B" stroke="#01579B" stroke-width="0.0"/>
+  <text x="123.0" y="153.1" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" font-style="normal" fill="#FFFFFF">STATIC</text>
+  <text x="25.0" y="149.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">Parcel</text>
+  <text x="25.0" y="163.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">Cadastre</text>
+  <text x="25.0" y="180.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">County GIS: parcel</text>
+  <text x="25.0" y="194.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">boundaries, ownership,</text>
+  <text x="25.0" y="208.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">current use</text>
+  <text x="25.0" y="224.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">-&gt; Initialize the spatial grid</text>
+  <text x="25.0" y="238.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">&amp; developable mask</text>
+  <rect x="18.0" y="257.7" width="137.0" height="145.0" rx="4" ry="4" fill="#FFFFFF" stroke="#6A1BA3" stroke-width="1.0"/>
+  <rect x="98.0" y="264.7" width="50.0" height="15.0" rx="3" ry="3" fill="#01579B" stroke="#01579B" stroke-width="0.0"/>
+  <text x="123.0" y="275.1" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" font-style="normal" fill="#FFFFFF">STATIC</text>
+  <text x="25.0" y="271.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">Census</text>
+  <text x="25.0" y="285.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">Demographic</text>
+  <text x="25.0" y="299.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">s</text>
+  <text x="25.0" y="316.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Tract-level household</text>
+  <text x="25.0" y="330.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">composition, income,</text>
+  <text x="25.0" y="344.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">tenure</text>
+  <text x="25.0" y="360.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">-&gt; Population synthesis &amp;</text>
+  <text x="25.0" y="374.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">preference-class</text>
+  <text x="25.0" y="388.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">assignment</text>
+  <rect x="18.0" y="407.7" width="137.0" height="131.0" rx="4" ry="4" fill="#FFFFFF" stroke="#6A1BA3" stroke-width="1.0"/>
+  <rect x="98.0" y="414.7" width="50.0" height="15.0" rx="3" ry="3" fill="#1B5E20" stroke="#1B5E20" stroke-width="0.0"/>
+  <text x="123.0" y="425.1" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" font-style="normal" fill="#FFFFFF">DYNAMIC</text>
+  <text x="25.0" y="421.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">Historical</text>
+  <text x="25.0" y="435.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">Land-Use</text>
+  <text x="25.0" y="449.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">Maps</text>
+  <text x="25.0" y="466.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">NLCD / Landsat-derived</text>
+  <text x="25.0" y="480.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">developed-vs-undevelope</text>
+  <text x="25.0" y="494.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">d, decadal</text>
+  <text x="25.0" y="510.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">-&gt; Calibration target &amp;</text>
+  <text x="25.0" y="524.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">validation reference</text>
+  <rect x="18.0" y="543.7" width="137.0" height="131.0" rx="4" ry="4" fill="#FFFFFF" stroke="#6A1BA3" stroke-width="1.0"/>
+  <rect x="98.0" y="550.7" width="50.0" height="15.0" rx="3" ry="3" fill="#1B5E20" stroke="#1B5E20" stroke-width="0.0"/>
+  <text x="123.0" y="561.1" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" font-style="normal" fill="#FFFFFF">DYNAMIC</text>
+  <text x="25.0" y="557.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">Real-Estate</text>
+  <text x="25.0" y="571.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">Transactions</text>
+  <text x="25.0" y="588.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Recent sale prices,</text>
+  <text x="25.0" y="602.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">hedonic attributes, move</text>
+  <text x="25.0" y="616.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">histories</text>
+  <text x="25.0" y="632.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">-&gt; Hedonic regression for</text>
+  <text x="25.0" y="646.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">amenity weights;</text>
+  <text x="25.0" y="660.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">preference clustering</text>
+  <rect x="18.0" y="679.7" width="137.0" height="131.0" rx="4" ry="4" fill="#FFFFFF" stroke="#6A1BA3" stroke-width="1.0"/>
+  <rect x="98.0" y="686.7" width="50.0" height="15.0" rx="3" ry="3" fill="#1B5E20" stroke="#1B5E20" stroke-width="0.0"/>
+  <text x="123.0" y="697.1" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" font-style="normal" fill="#FFFFFF">DYNAMIC</text>
+  <text x="25.0" y="693.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">Zoning &amp;</text>
+  <text x="25.0" y="707.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4A148C">Policy Layers</text>
+  <text x="25.0" y="724.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Zoning, growth</text>
+  <text x="25.0" y="738.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">boundaries, transit</text>
+  <text x="25.0" y="752.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">corridors, road network</text>
+  <text x="25.0" y="768.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">-&gt; Constrain feasible</text>
+  <text x="25.0" y="782.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">parcels &amp; accessibility</text>
+  <text x="25.0" y="796.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">scoring</text>
+  <rect x="18.0" y="815.7" width="137.0" height="372.5" rx="4" ry="4" fill="#FFFDE7" stroke="#E65100" stroke-width="1.5"/>
+  <text x="25.0" y="829.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#BF360C">DATA PIPELINE</text>
+  <text x="25.0" y="846.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">1. Collection</text>
+  <text x="30.0" y="860.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">County GIS download  | </text>
+  <text x="30.0" y="874.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">USGS NLCD / Landsat</text>
+  <text x="30.0" y="888.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">archive  |  Census</text>
+  <text x="30.0" y="902.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">microdata  |  MLS /</text>
+  <text x="30.0" y="916.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">assessor transaction</text>
+  <text x="30.0" y="930.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">feed</text>
+  <text x="25.0" y="946.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">2. Pre-processing</text>
+  <text x="30.0" y="960.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">Parcel-to-raster</text>
+  <text x="30.0" y="974.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">rasterization (100 m)  | </text>
+  <text x="30.0" y="988.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">Land-cover</text>
+  <text x="30.0" y="1002.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">reclassification</text>
+  <text x="30.0" y="1016.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">(developed /</text>
+  <text x="30.0" y="1030.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">undeveloped)  |  Spatial</text>
+  <text x="30.0" y="1044.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">join of demographics to</text>
+  <text x="30.0" y="1058.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">parcels</text>
+  <text x="25.0" y="1074.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">3. Analysis</text>
+  <text x="30.0" y="1088.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">Hedonic regression for</text>
+  <text x="30.0" y="1102.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">amenity weights  | </text>
+  <text x="30.0" y="1116.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">k-means clustering of</text>
+  <text x="30.0" y="1130.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">move patterns -&gt;</text>
+  <text x="30.0" y="1144.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">preference classes  | </text>
+  <text x="30.0" y="1158.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">Accessibility surface</text>
+  <text x="30.0" y="1172.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">(network distance to</text>
+  <text x="30.0" y="1186.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#616161">CBD &amp; transit)</text>
+  <rect x="167.0" y="98.5" width="255.0" height="767.5" rx="7" ry="7" fill="#E0F7FA" stroke="#006064" stroke-width="2.0"/>
+  <text x="294.5" y="113.5" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="8.0" font-weight="bold" font-style="normal" fill="#006064">ABM CORE:  ResLUCC (Residential Land-Use Change ABM)</text>
+  <rect x="176.0" y="784.2" width="237.0" height="72.8" rx="4" ry="4" fill="#FFFDE7" stroke="#E65100" stroke-width="1.2"/>
+  <text x="183.0" y="798.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Temporal: 1 year  |  Duration: 40 years</text>
+  <text x="183.0" y="812.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">(1990-2030)</text>
+  <text x="183.0" y="826.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#B71C1C">Stop: Simulation horizon reached OR</text>
+  <text x="183.0" y="840.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#B71C1C">developable land exhausted</text>
+  <rect x="176.0" y="131.7" width="121.0" height="542.5" rx="5" ry="5" fill="#E0F7FA" stroke="#006064" stroke-width="1.5"/>
+  <text x="183.0" y="145.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#006064">AGENTS  (n=[N =</text>
+  <text x="183.0" y="159.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#006064">households +</text>
+  <text x="183.0" y="173.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#006064">developers])</text>
+  <text x="183.0" y="189.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Types: Household,</text>
+  <text x="183.0" y="203.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Developer</text>
+  <text x="183.0" y="219.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">State variables:</text>
+  <text x="183.0" y="234.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">•</text>
+  <text x="195.0" y="234.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">income</text>
+  <text x="183.0" y="248.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">•</text>
+  <text x="195.0" y="248.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">preference_class</text>
+  <text x="183.0" y="262.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">•</text>
+  <text x="195.0" y="262.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">tenure_status</text>
+  <text x="183.0" y="276.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">•</text>
+  <text x="195.0" y="276.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">current_parcel</text>
+  <text x="183.0" y="290.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">•</text>
+  <text x="195.0" y="290.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">dissatisfaction</text>
+  <text x="183.0" y="306.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">-&gt; Census</text>
+  <text x="183.0" y="320.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">Demographics +</text>
+  <text x="183.0" y="334.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">Real-Estate</text>
+  <text x="183.0" y="348.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">Transactions</text>
+  <rect x="183.0" y="339.7" width="107.0" height="332.5" rx="4" ry="4" fill="#E8FDFF" stroke="#006064" stroke-width="1.0"/>
+  <text x="190.0" y="353.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#006064">Submodels</text>
+  <text x="190.0" y="367.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#006064">(Behaviors)</text>
+  <text x="190.0" y="384.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Move Decision</text>
+  <text x="197.0" y="398.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">Triggered by</text>
+  <text x="197.0" y="412.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">life-cycle events</text>
+  <text x="197.0" y="426.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">or dissatisfaction</text>
+  <text x="197.0" y="440.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">threshold</text>
+  <text x="190.0" y="456.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Location Choice</text>
+  <text x="197.0" y="470.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">Utility-based bid</text>
+  <text x="197.0" y="484.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">over feasible</text>
+  <text x="197.0" y="498.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">parcels</text>
+  <text x="197.0" y="512.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">(multinomial logit)</text>
+  <text x="190.0" y="528.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Developer</text>
+  <text x="190.0" y="542.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Conversion</text>
+  <text x="197.0" y="556.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">Convert</text>
+  <text x="197.0" y="570.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">undeveloped -&gt;</text>
+  <text x="197.0" y="584.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">developed if</text>
+  <text x="197.0" y="598.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">expected return &gt;</text>
+  <text x="197.0" y="612.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">threshold</text>
+  <text x="190.0" y="628.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Amenity Update</text>
+  <text x="197.0" y="642.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">Neighbor density</text>
+  <text x="197.0" y="656.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">&amp; land cover</text>
+  <text x="197.0" y="670.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">update local</text>
+  <text x="197.0" y="684.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">aesthetic score</text>
+  <rect x="302.0" y="131.7" width="111.0" height="186.5" rx="5" ry="5" fill="#E8F5E9" stroke="#1B5E20" stroke-width="1.5"/>
+  <text x="309.0" y="145.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#1B5E20">ENVIRONMENT</text>
+  <text x="309.0" y="161.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Grid: Regular raster</text>
+  <text x="309.0" y="175.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">of parcels</text>
+  <text x="309.0" y="189.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Resolution: 100 m x</text>
+  <text x="309.0" y="203.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">100 m cells</text>
+  <text x="309.0" y="217.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Layers: Zoning,</text>
+  <text x="309.0" y="231.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Accessibility,</text>
+  <text x="309.0" y="245.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Amenity, Existing</text>
+  <text x="309.0" y="259.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">development</text>
+  <text x="309.0" y="276.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">-&gt; Parcel Cadastre;</text>
+  <text x="309.0" y="290.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">Historical Land-Use</text>
+  <text x="309.0" y="304.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">Maps</text>
+  <rect x="302.0" y="323.2" width="111.0" height="452.0" rx="5" ry="5" fill="#FFF3E0" stroke="#BF360C" stroke-width="1.5"/>
+  <text x="309.0" y="337.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#BF360C">INTERACTIONS</text>
+  <text x="309.0" y="353.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">* Agent &lt;&gt; Agent</text>
+  <text x="316.0" y="367.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Households bid</text>
+  <text x="316.0" y="381.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">competitively for</text>
+  <text x="316.0" y="395.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">the same parcel;</text>
+  <text x="316.0" y="409.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">highest bid wins</text>
+  <text x="316.0" y="423.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">(auction</text>
+  <text x="316.0" y="437.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">mechanism)</text>
+  <text x="316.0" y="451.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Neighbor effects:</text>
+  <text x="316.0" y="465.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">nearby</text>
+  <text x="316.0" y="479.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">development alters</text>
+  <text x="316.0" y="493.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">local aesthetic &amp;</text>
+  <text x="316.0" y="507.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">price</text>
+  <text x="309.0" y="522.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">* Agent &lt;&gt; Env</text>
+  <text x="316.0" y="536.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Zoning rules</text>
+  <text x="316.0" y="550.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">constrain the</text>
+  <text x="316.0" y="564.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">feasible-parcel set</text>
+  <text x="316.0" y="578.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Accessibility</text>
+  <text x="316.0" y="592.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">(distance to CBD /</text>
+  <text x="316.0" y="606.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">transit) enters</text>
+  <text x="316.0" y="620.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">utility</text>
+  <text x="309.0" y="636.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">* Topology</text>
+  <text x="316.0" y="650.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Regular 2D raster</text>
+  <text x="316.0" y="664.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">of parcels</text>
+  <text x="316.0" y="678.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Moore</text>
+  <text x="316.0" y="692.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">neighborhood for</text>
+  <text x="316.0" y="706.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">local effects</text>
+  <text x="309.0" y="724.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">-&gt; Zoning &amp; Policy</text>
+  <text x="309.0" y="738.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">Layers; Real-Estate</text>
+  <text x="309.0" y="752.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#4A148C">Transactions</text>
+  <rect x="427.0" y="98.5" width="157.3" height="295.2" rx="6" ry="6" fill="#FAFAFA" stroke="#CFD8DC" stroke-width="1.0"/>
+  <rect x="434.0" y="105.5" width="143.3" height="23.2" rx="4" ry="4" fill="#1A237E" stroke="#1A237E" stroke-width="0.0"/>
+  <text x="505.6" y="121.4" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12.0" font-weight="bold" font-style="normal" fill="#FFFFFF">OBSERVATIONS</text>
+  <rect x="434.0" y="135.7" width="143.3" height="127.5" rx="4" ry="4" fill="#EDE7F6" stroke="#4527A0" stroke-width="1.2"/>
+  <text x="441.0" y="149.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4527A0">[#] Settlement Pattern Map</text>
+  <text x="441.0" y="165.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Predicted developed /</text>
+  <text x="441.0" y="179.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">undeveloped raster vs</text>
+  <text x="441.0" y="193.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">observed</text>
+  <text x="441.0" y="207.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Spatial map</text>
+  <text x="441.0" y="221.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">Emergent: Leapfrog</text>
+  <text x="441.0" y="235.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">development &amp; fragmented</text>
+  <text x="441.0" y="249.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">edges</text>
+  <rect x="434.0" y="268.2" width="143.3" height="113.5" rx="4" ry="4" fill="#E3F2FD" stroke="#0D47A1" stroke-width="1.2"/>
+  <text x="441.0" y="282.4" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#0D47A1">[~] Density Gradient</text>
+  <text x="441.0" y="297.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Built-up density vs distance</text>
+  <text x="441.0" y="311.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">to CBD over time</text>
+  <text x="441.0" y="325.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Curve</text>
+  <text x="441.0" y="339.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">Emergent: Monocentric -&gt;</text>
+  <text x="441.0" y="353.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">polycentric structure under</text>
+  <text x="441.0" y="367.9" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="italic" fill="#616161">TOD scenarios</text>
+  <rect x="427.0" y="398.7" width="157.3" height="511.7" rx="6" ry="6" fill="#FAFAFA" stroke="#CFD8DC" stroke-width="1.0"/>
+  <rect x="434.0" y="405.7" width="143.3" height="23.2" rx="4" ry="4" fill="#4A148C" stroke="#4A148C" stroke-width="0.0"/>
+  <text x="505.6" y="421.6" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12.0" font-weight="bold" font-style="normal" fill="#FFFFFF">MODEL EVALUATION</text>
+  <rect x="434.0" y="435.9" width="143.3" height="282.0" rx="4" ry="4" fill="#FFEBEE" stroke="#B71C1C" stroke-width="1.2"/>
+  <text x="441.0" y="450.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#B71C1C">Calibration</text>
+  <text x="441.0" y="466.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Method:</text>
+  <text x="491.0" y="466.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Pattern-oriented</text>
+  <text x="491.0" y="480.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">modeling (POM)</text>
+  <text x="491.0" y="494.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">with genetic</text>
+  <text x="491.0" y="508.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">algorithm</text>
+  <text x="441.0" y="522.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Params:</text>
+  <text x="491.0" y="522.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">preference</text>
+  <text x="491.0" y="536.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">weights,</text>
+  <text x="491.0" y="550.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">developer</text>
+  <text x="491.0" y="564.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">threshold,</text>
+  <text x="491.0" y="578.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">neighbor-effect</text>
+  <text x="491.0" y="592.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">radius</text>
+  <text x="441.0" y="606.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Data:</text>
+  <text x="491.0" y="606.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Historical</text>
+  <text x="491.0" y="620.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Land-Use Maps</text>
+  <text x="491.0" y="634.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">(1990 -&gt; 2010</text>
+  <text x="491.0" y="648.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">trajectory)</text>
+  <text x="441.0" y="662.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Result:</text>
+  <text x="491.0" y="662.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Best-fit parameter</text>
+  <text x="491.0" y="676.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">set; Kappa &gt; 0.70</text>
+  <text x="491.0" y="690.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">on calibration</text>
+  <text x="491.0" y="704.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">period</text>
+  <rect x="434.0" y="722.9" width="143.3" height="194.5" rx="4" ry="4" fill="#E8F5E9" stroke="#1B5E20" stroke-width="1.2"/>
+  <text x="441.0" y="737.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#1B5E20">Validation</text>
+  <text x="441.0" y="753.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">•</text>
+  <text x="453.0" y="753.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Multi-resolution Kappa on</text>
+  <text x="453.0" y="767.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">held-out 2010-2020 maps</text>
+  <text x="441.0" y="781.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">•</text>
+  <text x="453.0" y="781.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Density-gradient &amp;</text>
+  <text x="453.0" y="795.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">fractal-dimension</text>
+  <text x="453.0" y="809.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">comparison</text>
+  <text x="441.0" y="823.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">•</text>
+  <text x="453.0" y="823.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">Null-model contrast</text>
+  <text x="453.0" y="837.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">(random allocation,</text>
+  <text x="453.0" y="851.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#212121">persistence)</text>
+  <text x="441.0" y="865.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#1B5E20">Result: Pattern metrics</text>
+  <text x="441.0" y="879.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#1B5E20">within 10% of observed; null</text>
+  <text x="441.0" y="893.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#1B5E20">clearly rejected</text>
+  <rect x="11.0" y="1200.2" width="573.3" height="108.7" rx="6" ry="6" fill="#ECEFF1" stroke="#78909C" stroke-width="1.0"/>
+  <text x="18.0" y="1215.8" font-family="Helvetica, Arial, sans-serif" font-size="12.0" font-weight="bold" font-style="normal" fill="#212121">SCENARIOS (if applicable):</text>
+  <rect x="18.0" y="1237.4" width="136.1" height="64.5" rx="4" ry="4" fill="#FFFFFF" stroke="#CFD8DC" stroke-width="1.0"/>
+  <text x="25.0" y="1251.6" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Baseline</text>
+  <text x="25.0" y="1267.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Status-quo zoning;</text>
+  <text x="25.0" y="1281.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">calibrated preferences</text>
+  <rect x="159.1" y="1237.4" width="136.1" height="64.5" rx="4" ry="4" fill="#FFFFFF" stroke="#CFD8DC" stroke-width="1.0"/>
+  <text x="166.1" y="1251.6" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">Growth Boundary</text>
+  <text x="166.1" y="1267.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Strict urban-growth</text>
+  <text x="166.1" y="1281.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">boundary around existing</text>
+  <text x="166.1" y="1295.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">built-up area</text>
+  <rect x="300.1" y="1237.4" width="136.1" height="64.5" rx="4" ry="4" fill="#FFFFFF" stroke="#CFD8DC" stroke-width="1.0"/>
+  <text x="307.1" y="1251.6" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#212121">TOD Upzoning</text>
+  <text x="307.1" y="1267.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">Higher allowed density</text>
+  <text x="307.1" y="1281.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">within 800 m of transit</text>
+  <text x="307.1" y="1295.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#424242">corridors</text>
+  <rect x="441.2" y="1237.4" width="136.1" height="64.5" rx="4" ry="4" fill="#EDE7F6" stroke="#4527A0" stroke-width="2.5"/>
+  <text x="448.2" y="1251.6" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="bold" font-style="normal" fill="#4527A0">★ Combined</text>
+  <text x="448.2" y="1267.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#4527A0">Growth boundary + TOD</text>
+  <text x="448.2" y="1281.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#4527A0">upzoning; key DT policy</text>
+  <text x="448.2" y="1295.1" font-family="Helvetica, Arial, sans-serif" font-size="10.0" font-weight="normal" font-style="normal" fill="#4527A0">scenario</text>
+</svg>
