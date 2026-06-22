@@ -83,7 +83,7 @@ r.render_png("out.png", dpi=300)   # needs pymupdf
 - **`Interactions`** — `agent_agent`, `agent_environment`, `topology`,
   `data_source`.
 - **`Environment`** — `grid`, `resolution`, `layers`, `data_source`.
-- **`OutputPattern`** — `name`, `what_measured`, `pattern_type`, `emergent`, `has_chart`. (optional flag, default False).
+- **`OutputPattern`** — `name`, `what_measured`, `pattern_type`, `emergent`, `has_chart` (optional flag, default `False`).
 - **`Calibration`** — `method`, `target_params`, `data_source`, `result`.
 - **`Validation`** — `approaches`, `result`.
 - **`ModelEvaluation`** — `calibration`, `validation`.
