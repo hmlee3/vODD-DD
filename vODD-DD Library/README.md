@@ -17,11 +17,29 @@ and SVG and just skips the PNG (it also falls back to the `pdftoppm` system tool
 if present).
 
 ## Quick start
-A complete, runnable example is in `example_sir.py`:
+
+Two complete, runnable examples live in `exampleABM/`:
+
+- `example_sir.py` — the canonical SIR epidemic case study.
+- `example_landuseABM.py` — a residential land-use change ABM after
+  Parker et al. (2003) / Brown et al. (2005).
+
+Run them from the project root (the folder that contains `vodd_dd/`):
 
 ```bash
-python example_sir.py
+python exampleABM/example_sir.py
+python exampleABM/example_landuseABM.py
 ```
+
+> **Path note.** Because the examples now live in a sub-folder, the top of each
+> script must add the project root to `sys.path` so `from vodd_dd import ...`
+> resolves:
+>
+> ```python
+> import sys, os
+> # Step up one level from exampleABM/ to reach the project root where vodd_dd/ lives.
+> sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+> ```
 
 ## The diagram layout
 
@@ -74,4 +92,3 @@ r.render_png("out.png", dpi=300)   # needs pymupdf
 List fields are optional and default to empty, so you can fill in as much or as
 little as your model needs. Boxes grow automatically to fit the text, and long
 labels shrink to stay inside their banners — no manual layout required.
-
