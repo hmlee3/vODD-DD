@@ -24,7 +24,7 @@ Two complete, runnable examples live in `exampleABM/`:
 - `example_landuseABM.py` — a residential land-use change ABM after
   Parker et al. (2003) / Brown et al. (2005).
 
-Run them from the project root (the folder that contains `vodd_dd/`):
+Run them from the project root:
 
 ```bash
 python exampleABM/example_sir.py
